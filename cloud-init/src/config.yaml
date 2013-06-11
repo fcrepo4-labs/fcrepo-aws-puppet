@@ -1,0 +1,18 @@
+#cloud-config
+# vim: syntax=yaml
+
+output:
+  all: "| logger -s -t cloud-init"
+
+timezone: Europe/Berlin
+
+apt_upgrade: true
+
+manage_etc_hosts: localhost
+
+packages:
+ - ca-certificates
+ - curl
+ - git
+ - puppet-common
+
