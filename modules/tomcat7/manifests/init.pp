@@ -41,6 +41,10 @@ class tomcat7 (
     $install_admin = true,
     $data_dir = '/opt/fcrepo4-data',
 ) {
+
+  include yourkit
+
+  $yourkitdir = "$yourkit::yourkit"
   $jre_package = "${jre}-jre-headless"
 
   package { 'tomcat7':
@@ -86,6 +90,7 @@ class tomcat7 (
     require => [Package['tomcat7'],
       File[$data_dir],
       File['/etc/default/tomcat7'],
+      Exec['untar yourkit'],
     ],
   }   
 

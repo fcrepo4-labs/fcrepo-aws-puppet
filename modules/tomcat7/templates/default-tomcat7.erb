@@ -39,6 +39,10 @@ JAVA_OPTS="${JAVA_OPTS} -Dfcrepo.infinispan.cache_configuration=config/infinispa
 #JAVA_OPTS="${JAVA_OPTS} -Djgroups.tcpping.initial_hosts='10.46.63.200[7800],10.151.125.215[7800],10.151.53.165[7800]' -Dfcrepo.ispn.numOwners=2 -Djava.net.PreferIPv4Stack=true"
 
 
+# YourKit Profiling
+JAVA_OPTS="${JAVA_OPTS} -agentpath:/opt/<%= yourkitdir %>/bin/linux-x86-64/libyjpagent.so"
+
+
 #setup logging config
 JAVA_OPTS="${JAVA_OPTS} -Djava.util.logging.config.file=/var/lib/tomcat7/conf/logging.properties"
 
