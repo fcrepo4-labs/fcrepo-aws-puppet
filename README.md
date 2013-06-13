@@ -16,7 +16,7 @@ sudo apt-get install cloud-utils puppet-common git ec2-api-tools -y
 			and install it via:
     ```python setup.py build
     sudo python setup.py install```
- 4. DO stuff 
+ 4. Install Amazon's EC2 CLI utilities according to [these](http://www.robertsosinski.com/2008/01/26/starting-amazon-ec2-with-mac-os-x/) instructions.
 
 ### 2. Put your AWS credentials in the file: ~/.awssecret, in the form:
 > export AWS_ACCESS_KEY=[your-aws-access-key]
