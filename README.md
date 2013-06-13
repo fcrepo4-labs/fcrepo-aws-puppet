@@ -14,7 +14,7 @@ sudo apt-get install cloud-utils puppet-common git ec2-api-tools -y
  2. First, install Puppet via [the official installers](http://docs.puppetlabs.com/guides/installation.html#mac-os-x)
  3. Retrieve the unofficial source for cloud-init/cloud-utils [here](https://github.com/lovelysystems/cloud-init)
 			and install it via:
-    ```python setup.py build
+    ```python setup.py build; 
     sudo python setup.py install```
  4. Install Amazon's EC2 CLI utilities according to [these](http://www.robertsosinski.com/2008/01/26/starting-amazon-ec2-with-mac-os-x/) instructions.
 
