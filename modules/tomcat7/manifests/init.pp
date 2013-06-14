@@ -40,6 +40,7 @@ class tomcat7 (
     $jre = 'default',
     $install_admin = true,
     $data_dir = '/opt/fcrepo4-data',
+    $repo_config = 'classpath:/config/async-indexing/repository.json',
 ) {
 
   include yourkit

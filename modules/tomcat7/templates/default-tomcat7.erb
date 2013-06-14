@@ -29,10 +29,10 @@ JAVA_OPTS="${JAVA_OPTS} -Dfcrepo.ispn.binary.alternative.CacheDirPath=<%= data_d
 JAVA_OPTS="${JAVA_OPTS} -Dfcrepo.activemq.dir=<%= data_dir %>/active-mq"
 JAVA_OPTS="${JAVA_OPTS} -Dcom.arjuna.ats.arjuna.common.ObjectStoreEnvironmentBean.default.objectStoreDir=<%= data_dir %>/object-store-default"
 JAVA_OPTS="${JAVA_OPTS} -Dcom.arjuna.ats.arjuna.objectstore.objectStoreDir=<%= data_dir %>/object-store"
+JAVA_OPTS="${JAVA_OPTS} -Dfcrepo.modeshape.configuration=<%= repo_config %>"
 
 
-
-JAVA_OPTS="${JAVA_OPTS} -Dfcrepo.infinispan.cache_configuration=config/infinispan_configuration_chained.xml"
+JAVA_OPTS="${JAVA_OPTS} -Dfcrepo.infinispan.cache_configuration=config/infinispan/chained/infinispan.xml"
 
 
 #JAVA_OPTS="${JAVA_OPTS} -Djgroups.tcp.address=10.151.125.215"
