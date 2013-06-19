@@ -1,4 +1,4 @@
-This Puppet script starts an AWS EC2 instance, then deploys fcrepo-kitchen-sink to a stand-alone Tomcat7 application server.
+This Puppet script starts an AWS EC2 instance, then deploys fcrepo-webapp to a stand-alone Tomcat7 application server.
 
 Note, this script has only been tested on Ubuntu 12.10 and Mac OS X 10.6.
 
