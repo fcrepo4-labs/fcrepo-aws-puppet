@@ -1,4 +1,6 @@
 #!/bin/bash
+
 set -ex
-CACHEDIR=/var/cache/cloud/puppet
-puppet apply --modulepath $CACHEDIR/modules -v $CACHEDIR/site/site.pp
+
+export CACHEDIR=/var/cache/cloud/puppet
+puppet apply -l /tmp/puppet.log --debug --modulepath $CACHEDIR/modules -v $CACHEDIR/site/site.pp
