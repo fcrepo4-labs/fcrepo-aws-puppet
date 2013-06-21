@@ -31,6 +31,10 @@ git clone https://github.com/futures/fcrepo-aws-puppet.git fcrepo-aws-puppet
 ### 4. Update the EC2 configuration elements found in:
 > fcrepo-aws-puppet/cloud-init/create-ec2-instance.conf
 
+* The defaults should be fine
+* In your AWS EC2 account, you will need to create a security group and an ssh keypair
+* Use the names of the security group and the keypair to populate the respective elements in: create-ec2-instance.conf
+
 ### 5. Run
 ```bash
 cd fcrepo-aws-puppet
