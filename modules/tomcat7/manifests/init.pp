@@ -41,12 +41,18 @@ class tomcat7 (
     $install_admin = true,
     $data_dir = '/opt/fcrepo4-data',
     $repo_config = 'classpath:/config/async-indexing/repository.json',
+#    $repo_config = 'classpath:/config/clustered/repository.json',
+    $etc_default_tomcat = 'tomcat7/default-tomcat7.erb',
+#    $etc_default_tomcat = 'tomcat7/default-tomcat7-clustered.erb',
 ) {
 
   include yourkit
 
   $yourkitdir = "$yourkit::yourkit"
   $jre_package = "${jre}-jre-headless"
+  $private_ip = "${ip_address}"
+
+  notify {"$ip_address":}
 
   package { 'tomcat7':
     ensure => installed,
@@ -65,9 +71,9 @@ class tomcat7 (
 
   file { '/etc/tomcat7/server.xml':
      owner => 'root',
-     require => Package['tomcat7'],
-     notify => Service['tomcat7'],
      content => template('tomcat7/server.xml.erb'),
+     notify => Service['tomcat7'],
+     require => Package['tomcat7'],
   }
 
   file { $data_dir:
@@ -80,9 +86,9 @@ class tomcat7 (
 
   file { '/etc/default/tomcat7':
      owner => 'root',
-     require => Package['tomcat7'],
+     content => template("${etc_default_tomcat}"),
      notify => Service['tomcat7'],
-     content => template('tomcat7/default-tomcat7.erb'),
+     require => Package['tomcat7'],
   }
 
   service { 'tomcat7':
@@ -93,6 +99,6 @@ class tomcat7 (
       File['/etc/default/tomcat7'],
       Exec['untar yourkit'],
     ],
-  }   
+  }
 
 }

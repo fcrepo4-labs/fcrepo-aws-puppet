@@ -14,6 +14,7 @@ define tomcat7::fcrepo-webapp($url,$war) {
     source => "/tmp/${war}",
     require => [Exec['download'],
       Package['tomcat7'],
+      File['/etc/default/tomcat7'],
     ],
   }
 
