@@ -18,6 +18,15 @@ sudo apt-get install cloud-utils puppet-common git ec2-api-tools -y
     sudo python setup.py install```
  4. Install Amazon's EC2 CLI utilities according to [these](http://www.robertsosinski.com/2008/01/26/starting-amazon-ec2-with-mac-os-x/) instructions.
 
+* For Arch Linux: (It's recommended to use a tool such as pacaur to install packages from the Arch User Repository, otherwise you will have to install all the dependencies by hand: https://aur.archlinux.org/packages/pacaur/)
+ 1. Install cloud-init-bzr from AUR (just for the dependencies): https://aur.archlinux.org/packages/cloud-init-bzr/
+ 2. Since cloud-init lacks write-mime-multipart you can checkout the script from http://bazaar.launchpad.net/~cloud-init-dev/cloud-init/trunk/view/252/tools/write-mime-multipart and put it into e.g. /usr/local/bin/write-mime-multipart
+ 3. Update the first line of the write-mime-multipart script to point at the python2 binary e.g. /usr/bin/python2
+ 4. Install Amazon's ec2-api-tools from AUR: https://aur.archlinux.org/packages/ec2-api-tools/
+ 5. Install Eucalyptus tool set euca2ools from AUR: https://aur.archlinux.org/packages/euca2ools/
+ 
+
+
 ### 2. Put your AWS credentials in the file: ~/.awssecret, in the form:
 > export AWS_ACCESS_KEY=[your-aws-access-key]
 
@@ -45,4 +54,3 @@ Note: There is a script in the root directory which can be run to try out the pu
 ```bash
 sudo ./test.sh --noop
 ```
-
