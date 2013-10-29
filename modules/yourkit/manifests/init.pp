@@ -18,10 +18,9 @@
 #     yourkit => 'yjp-12.0.5',
 #   }
 #
-
 class yourkit (
     $url = "http://www.yourkit.com/download",
-    $yourkit = "yjp-12.0.5",
+    $yourkit = "yjp-2013-build-13048",
 ) {
 
   $yourkit_tar = "${yourkit}-linux.tar.bz2"
