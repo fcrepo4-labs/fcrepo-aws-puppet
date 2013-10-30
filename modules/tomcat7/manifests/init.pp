@@ -41,7 +41,7 @@ class tomcat7 (
     $https_port = 8443,
     $jre = 'default',
     $install_admin = true,
-    $data_dir = '/opt/fcrepo4-data',
+    $data_dir = '/mnt/fcrepo4-data',
     $repo_config = 'classpath:/config/async-indexing/repository.json',
 #    $repo_config = 'classpath:/config/clustered/repository.json',
     $etc_default_tomcat = 'tomcat7/default-tomcat7.erb',
