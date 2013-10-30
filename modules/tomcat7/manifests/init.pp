@@ -54,6 +54,16 @@ class tomcat7 (
 
   notify {"$ip_address":}
 
+  exec { "increase send buffer size":
+    command => "sudo sysctl -w net.core.rmem_max=5242880",
+    path => "/bin/:/usr/bin/",
+  }
+
+  exec { "increase recv buffer size":
+    command => "sudo sysctl -w net.core.wmem_max=5242880",
+    path => "/bin/:/usr/bin/",
+  }
+
   package { 'tomcat7':
     ensure => installed,
     require => Package[$jre_package],
