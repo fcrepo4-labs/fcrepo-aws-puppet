@@ -40,8 +40,9 @@ JAVA_OPTS="${JAVA_OPTS} -Dfcrepo.infinispan.cache_configuration=config/infinispa
 
 
 # YourKit Profiling
+<% if install_yourkit == true %>
 JAVA_OPTS="${JAVA_OPTS} -agentpath:/opt/<%= yourkitdir %>/bin/linux-x86-64/libyjpagent.so"
-
+<% end %>
 
 #setup logging config
 JAVA_OPTS="${JAVA_OPTS} -Djava.util.logging.config.file=/var/lib/tomcat7/conf/logging.properties"

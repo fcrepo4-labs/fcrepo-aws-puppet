@@ -25,14 +25,16 @@ class yourkit (
 
   $yourkit_tar = "${yourkit}-linux.tar.bz2"
   $yourkit_tar_dest = "/opt/${yourkit_tar}"
-
+  
   exec { 'download yourkit':
     command => "/usr/bin/wget ${url}/${yourkit_tar} -O ${yourkit_tar_dest}",
     creates => "${yourkit_tar_dest}",
+    onlyif => "/usr/bin/test ${install_yourkit} = true",
   }
 
   exec { 'untar yourkit':
     command => "/bin/tar xfj ${yourkit_tar_dest}",
+    onlyif => "/usr/bin/test ${install_yourkit} = true",
     cwd => "/opt",
     creates => "/opt/${yourkit}",
     require => Exec['download'],

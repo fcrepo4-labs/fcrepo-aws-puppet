@@ -48,7 +48,9 @@ JAVA_OPTS="${JAVA_OPTS} -Djgroups.s3.bucket=fcrepo4-cluster-0"
 
 
 # YourKit Profiling
-#JAVA_OPTS="${JAVA_OPTS} -agentpath:/opt/<%= yourkitdir %>/bin/linux-x86-64/libyjpagent.so"
+<% if install_yourkit == true %>
+JAVA_OPTS="${JAVA_OPTS} -agentpath:/opt/<%= yourkitdir %>/bin/linux-x86-64/libyjpagent.so"
+<% end %>
 
 #set fcrepo4 baseUrl for fixity-service
 JAVA_OPTS="${JAVA_OPTS} -Dorg.fcrepo.fixity.fcrepo.url=http://localhost:8080/fcrepo/rest -Dorg.fcrepo.fixity.brokerurl=tcp://localhost:61616"

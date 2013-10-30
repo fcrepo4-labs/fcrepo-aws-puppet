@@ -32,6 +32,8 @@
 #   }
 #
 
+
+
 class tomcat7 (
     $enable = true,
     $ensure = running,
@@ -44,11 +46,14 @@ class tomcat7 (
 #    $repo_config = 'classpath:/config/clustered/repository.json',
     $etc_default_tomcat = 'tomcat7/default-tomcat7.erb',
 #    $etc_default_tomcat = 'tomcat7/default-tomcat7-clustered.erb',
+    $install_yourkit = false, 
 ) {
 
-  include yourkit
+  if ($install_yourkit) {
+    include yourkit
+    $yourkitdir = "$yourkit::yourkit"
+  }
 
-  $yourkitdir = "$yourkit::yourkit"
   $jre_package = "${jre}-jre-headless"
   $private_ip = "${ip_address}"
 
@@ -100,15 +105,31 @@ class tomcat7 (
      notify => Service['tomcat7'],
      require => Package['tomcat7'],
   }
+ 
+  if ($install_yourkit) {
+    
+    service { 'tomcat7':
+      ensure => $ensure,
+      enable => $enable,
+      require => [Package['tomcat7'],
+        File[$data_dir],
+        File['/etc/default/tomcat7'],
+        Exec['untar yourkit'],
+      ],
+    }
 
-  service { 'tomcat7':
-    ensure => $ensure,
-    enable => $enable,
-    require => [Package['tomcat7'],
-      File[$data_dir],
-      File['/etc/default/tomcat7'],
-      Exec['untar yourkit'],
-    ],
+  } 
+  else {
+
+    service { 'tomcat7':
+      ensure => $ensure,
+      enable => $enable,
+      require => [Package['tomcat7'],
+        File[$data_dir],
+        File['/etc/default/tomcat7'],
+      ],
+    }
+
   }
 
 }
