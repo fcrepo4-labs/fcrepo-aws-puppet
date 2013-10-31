@@ -30,6 +30,7 @@ JAVA_OPTS="${JAVA_OPTS} -Dfcrepo.activemq.dir=<%= data_dir %>/active-mq"
 JAVA_OPTS="${JAVA_OPTS} -Dcom.arjuna.ats.arjuna.common.ObjectStoreEnvironmentBean.default.objectStoreDir=<%= data_dir %>/object-store-default"
 JAVA_OPTS="${JAVA_OPTS} -Dcom.arjuna.ats.arjuna.objectstore.objectStoreDir=<%= data_dir %>/object-store"
 JAVA_OPTS="${JAVA_OPTS} -Dfcrepo.modeshape.configuration=<%= repo_config %>"
+JAVA_OPTS="${JAVA_OPTS} -Dfcrepo.binary-store-path=<%= data_dir %>/binaries"
 
 
 JAVA_OPTS="${JAVA_OPTS} -Dfcrepo.infinispan.cache_configuration=config/infinispan/chained/infinispan.xml"
